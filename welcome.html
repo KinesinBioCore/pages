@@ -111,6 +111,39 @@
             animation: fadeOut 0.5s ease-in-out forwards;
         }
 
+        /* NEW: Typing Animation Styles */
+        #typing-subtitle {
+            /* Set a min-height to prevent layout jump. Adjust as needed. */
+            min-height: 84px; /* Approx 3 lines on mobile */
+        }
+
+        #typing-subtitle.typing::after {
+            content: '_';
+            display: inline-block;
+            margin-left: 4px;
+            opacity: 1;
+            font-weight: 300;
+            color: #67e8f9; /* Cursor color */
+            animation: blink 0.7s infinite;
+        }
+
+        #typing-subtitle.typing-done::after {
+            content: ''; /* Remove cursor when done */
+            animation: none;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            #typing-subtitle {
+                min-height: 96px; /* Approx 2 lines on desktop */
+            }
+        }
+        /* END: Typing Animation Styles */
+
         /* NEW: Scroll-driven animation classes */
         .scroll-fade-in {
             opacity: 0;
@@ -141,7 +174,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <span class="pulse-dot inline-block w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-gray-400">Launching in 1 Week</span>
+                    <span class="text-sm font-medium text-gray-400">Launching in upcoming Weeks</span>
                 </div>
             </div>
         </div>
@@ -163,13 +196,15 @@
                     <span class="text-gray-400 text-sm">AI-Powered Biomedical Assistant</span>
                 </div>
                 
-                <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                <!-- MODIFIED: Changed from font-extrabold to font-bold -->
+                <h2 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                     Your <span class="gradient-text">Biomedical & Life Science</span> AI Companion
                 </h2>
                 
-                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                    Specialized AI for biomedical students, researchers, and healthcare professionals. 
-                    Get instant, reliable answers to complex medical and biological questions.
+                <!-- MODIFIED: Added id, data-text, and min-height classes. Cleared content. -->
+                <p id="typing-subtitle" 
+                   data-text="Specialized AI for biomedical students, researchers, and healthcare professionals. Get instant, reliable answers to complex medical and biological questions." 
+                   class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed min-h-[84px] md:min-h-[96px]">
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -326,7 +361,8 @@
     </section>
 
     <!-- About Section - UPDATED -->
-    <section id="about" class="py-24 bg-[#000000] border-t border-b border-cyan-500/20 relative overflow-hidden">
+    <!-- MODIFIED: Added .scroll-stagger-container -->
+    <section id="about" class="py-24 bg-[#000000] border-t border-b border-cyan-500/20 relative overflow-hidden scroll-stagger-container">
         <!-- Background Gradient Glow -->
         <div class="absolute inset-x-0 top-0 -translate-y-1/2 h-96 bg-cyan-900/30 blur-[120px] opacity-50 z-0"></div>
 
@@ -335,23 +371,27 @@
                 
                 <!-- Left: Title -->
                 <div class="lg:col-span-1">
-                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Built for the <span class="gradient-text">Future of Science</span></h3>
+                    <!-- MODIFIED: Added .scroll-fade-in -->
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4 scroll-fade-in">Built for the <span class="gradient-text">Future of Science</span></h3>
                 </div>
                 
                 <!-- Right: Content -->
                 <div class="lg:col-span-2 space-y-8 text-lg text-gray-300 leading-relaxed">
-                    <p>
+                    <!-- MODIFIED: Added .scroll-fade-in -->
+                    <p class="scroll-fade-in">
                         <span class="text-cyan-400 font-semibold">Kinesin</span> is a specialized AI assistant designed specifically for biomedical and life science professionals. While we excel in biology, medicine, biochemistry, and physiology, we're also equipped to handle complex queries across all scientific domains.
                     </p>
                     
                     <!-- Highlighted Mission Box -->
-                    <div class="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/20">
+                    <!-- MODIFIED: Added .scroll-fade-in -->
+                    <div class="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/20 scroll-fade-in">
                         <p>
                             Our mission is simple: <span class="text-white font-semibold">turn complex scientific knowledge into clear, accessible insights</span>. Whether you're a medical student studying for exams, a researcher analyzing data, or a healthcare professional looking for quick references, Kinesin adapts to your needs.
                         </p>
                     </div>
                     
-                    <p>
+                    <!-- MODIFIED: Added .scroll-fade-in -->
+                    <p class="scroll-fade-in">
                         Powered by <span class="text-cyan-400 font-semibold">Kinesin-core</span> with advanced NLP and RAG technology, Kinesin delivers fast, accurate, and contextually aware responses. Our system uses a vast library of biomedical literature to provide reliable explanations that simplify complex topics and accelerate learning.
                     </s_>
                 </div>
@@ -611,6 +651,46 @@
             init(); // 'init' is now defined
             animate(); // 'animate' is now defined
             // --- END OF FIX ---
+
+
+            // --- NEW: Start Typing Effect ---
+            function startTypingEffect() {
+                const el = document.getElementById('typing-subtitle');
+                if (!el) {
+                    console.error("Typing element not found.");
+                    return;
+                }
+
+                const fullText = el.dataset.text || "";
+                let currentText = "";
+                let index = 0;
+                el.textContent = ""; // Clear it
+                el.classList.add('typing'); // Add class to show cursor
+
+                function type() {
+                    if (index < fullText.length) {
+                        currentText += fullText.charAt(index);
+                        el.textContent = currentText;
+                        index++;
+                        
+                        // Add a slight random delay for natural feel
+                        // MODIFIED: Changed from (40 - 15 + 1) + 15  to (30 - 10 + 1) + 10
+                        let randomDelay = Math.floor(Math.random() * (30 - 10 + 1)) + 10; // 10ms to 30ms
+                        setTimeout(type, randomDelay);
+                    } else {
+                        // Typing finished
+                        el.classList.remove('typing');
+                        el.classList.add('typing-done');
+                    }
+                }
+
+                // Start typing after a short delay
+                setTimeout(type, 800); // 800ms delay before starting
+            }
+
+            startTypingEffect(); // Call the function
+            // --- END: Typing Effect ---
+
 
             // NEW: Staggered Scroll Fade-In Animation Logic
             const staggerContainers = document.querySelectorAll('.scroll-stagger-container');
