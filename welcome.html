@@ -1,131 +1,420 @@
+<artifact identifier="kinesin-landing-page" type="text/html" title="Kinesin AI - Landing Page">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinesin - AI for Science</title>
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter font --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Kinesin - AI for Biomedical & Life Sciences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Use Inter as the default font */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000000; /* Deep Black Background */
-            color: #E0E0E0; /* Light gray for general text on black */
+            background-color: #0d1117;
+            color: #c9d1d9;
         }
-        /* Hero Section Gradient - Adjusted for dark theme with cyan focus */
+        
         .hero-gradient {
-            background: linear-gradient(135deg, #000000 0%, #062f3a 100%); /* Darker gradient for hero */
+            background: radial-gradient(ellipse at top, #164e63 0%, #0d1117 50%);
         }
-        /* Specific overrides for Tailwind's dark mode classes to ensure consistency */
-        .dark\:bg-gray-900 { background-color: #000000 !important; }
-        .dark\:text-gray-200 { color: #E0E0E0 !important; }
-        .dark\:text-gray-300 { color: #B0B0B0 !important; }
-        .dark\:text-gray-400 { color: #808080 !important; }
-        .dark\:bg-gray-800 { background-color: #1a1a1a !important; }
-        .dark\:bg-gray-700 { background-color: #2a2a2a !important; }
-        .dark\:text-white { color: #FFFFFF !important; } /* Ensure white where needed on dark */
-
-        /* Custom Cyan color palette */
-        .text-cyan-primary { color: #06B6D4; } /* Tailwind 'cyan-500' */
-        .hover\:bg-cyan-600:hover { background-color: #0891B2; } /* Tailwind 'cyan-600' */
-        .bg-cyan-primary { background-color: #06B6D4; } /* Tailwind 'cyan-500' */
-        .border-cyan-primary { border-color: #06B6D4; }
-        .text-cyan-light { color: #67E8F9; } /* Tailwind 'cyan-300' */
-
-        /* Adjusting specific elements for better contrast */
-        .hero-gradient h2, .hero-gradient p {
-            color: #FFFFFF; /* White for hero text for maximum contrast on dark gradient */
+        
+        .feature-card {
+            background: linear-gradient(145deg, #161b22 0%, #0d1117 100%);
+            border: 1px solid #21262d;
+            transition: all 0.3s ease;
         }
-        .hero-gradient a {
-            background-color: #06B6D4; /* Cyan button */
-            color: #FFFFFF;
+        
+        .feature-card:hover {
+            border-color: #06b6d4;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+            transform: translateY(-4px);
         }
-        .hero-gradient a:hover {
-            background-color: #0891B2; /* Darker cyan on hover */
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #67e8f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stats-card {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .nav-blur {
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.4);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .tech-badge {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #67e8f9;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navigation Bar --><nav class="container mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-cyan-primary">Kinesin AI</h1>
-            <span class="text-sm font-medium text-gray-400">Coming Soon</span>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-xl font-bold text-white">Kinesin</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="pulse-dot inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+                    <span class="text-sm font-medium text-gray-400">Launching in 1 Week</span>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section --><header class="hero-gradient py-24 md:py-32">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4">
-                Discover the Future of Science with Kinesin
-            </h2>
-            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
-                Kinesin is a new AI-powered application designed to help researchers, students, and enthusiasts explore complex scientific concepts.
-            </p>
-            <a href="#features" class="bg-cyan-primary hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300">
-                Learn More
-            </a>
+    <!-- Hero Section -->
+    <header class="hero-gradient pt-32 pb-24 md:pt-40 md:pb-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-8">
+                    <span class="text-cyan-400 text-sm font-medium">New</span>
+                    <span class="text-gray-400 text-sm">AI-Powered Biomedical Assistant</span>
+                </div>
+                
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                    Your <span class="gradient-text">Biomedical & Life Science</span> AI Companion
+                </h2>
+                
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    Specialized AI for biomedical students, researchers, and healthcare professionals. 
+                    Get instant, reliable answers to complex medical and biological questions.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="#features" class="btn-primary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 inline-flex items-center justify-center">
+                        Explore Features
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                    <a href="#about" class="bg-transparent border-2 border-cyan-500/50 text-cyan-400 font-semibold py-4 px-8 rounded-xl hover:bg-cyan-500/10 transition duration-300 inline-flex items-center justify-center">
+                        Learn More
+                    </a>
+                </div>
+                
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium">Gemini 2.0 Flash</span>
+                    <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium">RAG-Enhanced</span>
+                    <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium">Real-time Research</span>
+                    <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium">Multi-modal AI</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Features Section --><section id="features" class="py-20 md:py-28 bg-gray-800">
+    <!-- Stats Section -->
+    <section class="py-16 bg-[#0d1117]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div class="stats-card p-6 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2">15K+</div>
+                    <div class="text-gray-400 text-sm">Research Papers</div>
+                </div>
+                <div class="stats-card p-6 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2">3</div>
+                    <div class="text-gray-400 text-sm">Specialized Personas</div>
+                </div>
+                <div class="stats-card p-6 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2">24/7</div>
+                    <div class="text-gray-400 text-sm">Availability</div>
+                </div>
+                <div class="stats-card p-6 rounded-2xl text-center">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2">5+</div>
+                    <div class="text-gray-400 text-sm">File Types</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-[#0d1117]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Powerful Features for Scientific Excellence</h3>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Everything you need to accelerate your biomedical research and learning</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Feature 1 -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Multi-modal Input</h4>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Upload images, PDFs, audio, and video files. Ask questions about medical scans, research papers, lecture recordings, or clinical data.
+                    </p>
+                    <div class="text-cyan-400 text-sm font-medium">Supports 5+ file types</div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Live Database Access</h4>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Real-time answers from Europe PMC and PubMed. Get the latest research findings with proper citations and sources.
+                    </p>
+                    <div class="text-cyan-400 text-sm font-medium">RAG-enhanced responses</div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Specialized Personas</h4>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Choose between Academic, Specialist, or Research modes. Get answers tailored to your level of expertise and needs.
+                    </p>
+                    <div class="text-cyan-400 text-sm font-medium">3 expert personas</div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Smart Thinking Process</h4>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        See how Kinesin thinks through complex problems. Watch the AI analyze, synthesize, and formulate comprehensive answers.
+                    </p>
+                    <div class="text-cyan-400 text-sm font-medium">Transparent reasoning</div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Rich Math Support</h4>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Beautiful rendering of complex equations, formulas, and scientific notation. Perfect for understanding biochemistry and physiology.
+                    </p>
+                    <div class="text-cyan-400 text-sm font-medium">MathJax powered</div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Export & Sync</h4>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Download conversations as PDFs. Sync your chat history across devices with Firebase cloud storage.
+                    </p>
+                    <div class="text-cyan-400 text-sm font-medium">Cloud-based sync</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-[#161b22]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Built for the Future of Science</h3>
+                
+                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                    <p>
+                        <span class="text-cyan-400 font-semibold">Kinesin</span> is a specialized AI assistant designed specifically for biomedical and life science professionals. While we excel in biology, medicine, biochemistry, and physiology, we're also equipped to handle complex queries across all scientific domains.
+                    </p>
+                    
+                    <p>
+                        Our mission is simple: <span class="text-white font-semibold">turn complex scientific knowledge into clear, accessible insights</span>. Whether you're a medical student studying for exams, a researcher analyzing data, or a healthcare professional looking for quick references, Kinesin adapts to your needs.
+                    </p>
+                    
+                    <div class="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-6 my-8">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Important Disclaimer
+                        </h4>
+                        <p class="text-gray-400">
+                            Kinesin is an AI tool built for educational and reference purposes only. It is <span class="text-white font-semibold">not a substitute for professional medical advice, diagnosis, or treatment</span>. Always consult qualified healthcare providers and verify critical information with primary sources.
+                        </p>
+                    </div>
+                    
+                    <p>
+                        Powered by <span class="text-cyan-400 font-semibold">Google's Gemini 2.0 Flash</span> with advanced NLP and RAG technology, Kinesin delivers fast, accurate, and contextually aware responses. Our system uses a vast library of biomedical literature to provide reliable explanations that simplify complex topics and accelerate learning.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-24 bg-[#0d1117]">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-3">What Kinesin Will Do</h3>
-                <p class="text-lg text-gray-300">A new toolkit for scientific discovery.</p>
+                <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Who Benefits from Kinesin?</h3>
+                <p class="text-xl text-gray-400">Designed for everyone in the scientific community</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 --><div class="bg-gray-700 p-8 rounded-2xl shadow-lg">
-                    <div class="mb-4">
-                        <!-- Simple icon using SVG --><svg class="w-12 h-12 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17.25h4.5m-4.5 0a2.25 2.25 0 01-2.25-2.25v-7.5a2.25 2.25 0 012.25-2.25h4.5a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25m-4.5 0v.001M12 19.5h.01"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Analyze Data</h4>
-                    <p class="text-gray-300">
-                        Upload your research data and let Kinesin's AI find patterns, generate insights, and create visualizations.
-                    </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="text-3xl mb-4">🎓</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Medical Students</h4>
+                    <p class="text-gray-400">Study smarter with AI-powered explanations, practice questions, and concept clarification.</p>
                 </div>
-                <!-- Feature 2 --><div class="bg-gray-700 p-8 rounded-2xl shadow-lg">
-                    <div class="mb-4">
-                        <svg class="w-12 h-12 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Summarize Research</h4>
-                    <p class="text-gray-300">
-                        Provide a link to any scientific paper, and Kinesin will provide a clear, easy-to-understand summary.
-                    </p>
+
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="text-3xl mb-4">🔬</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Researchers</h4>
+                    <p class="text-gray-400">Analyze data, summarize papers, and generate hypotheses for your next breakthrough.</p>
                 </div>
-                <!-- Feature 3 --><div class="bg-gray-700 p-8 rounded-2xl shadow-lg">
-                    <div class="mb-4">
-                        <svg class="w-12 h-12 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.25 3v1.5M4.5 8.25H3M19.5 8.25H21M15.75 3v1.5M12 18.75v-1.5m-6.364-6.364l-1.06-1.06M20.424 11.076l-1.06-1.06M17.657 5.343l-1.06 1.06M6.343 17.657l-1.06 1.06M12 21a9 9 0 100-18 9 9 0 000 18z"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Generate Hypotheses</h4>
-                    <p class="text-gray-300">
-                        Kinesin helps you brainstorm new research directions by connecting concepts and suggesting novel hypotheses.
-                    </p>
+
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="text-3xl mb-4">👨‍⚕️</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Healthcare Professionals</h4>
+                    <p class="text-gray-400">Quick reference for diagnoses, drug interactions, and treatment protocols.</p>
+                </div>
+
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="text-3xl mb-4">👩‍🏫</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Educators</h4>
+                    <p class="text-gray-400">Create lesson plans, generate examples, and simplify complex topics for students.</p>
+                </div>
+
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="text-3xl mb-4">📚</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Life Science Students</h4>
+                    <p class="text-gray-400">Master biology, biochemistry, and physiology with clear, detailed explanations.</p>
+                </div>
+
+                <div class="feature-card p-8 rounded-2xl">
+                    <div class="text-3xl mb-4">💊</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Pharmaceutical Teams</h4>
+                    <p class="text-gray-400">Research drug mechanisms, analyze clinical data, and explore molecular interactions.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Section --><section class="py-20 md:py-28 bg-cyan-primary text-white">
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-to-br from-cyan-900/20 to-cyan-700/10 border-t border-cyan-500/20">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="text-3xl md:text-4xl font-bold mb-4">Launching Soon</h3>
-            <p class="text-lg md:text-xl text-cyan-100 max-w-2xl mx-auto">
-                Kinesin will be available for production use in one week.
-            </p>
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Transform Your Research?</h3>
+                <p class="text-xl text-gray-300 mb-8">
+                    Kinesin will be available for production use in <span class="text-cyan-400 font-bold">one week</span>. 
+                    Be among the first to experience the future of biomedical AI.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="btn-primary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 inline-flex items-center justify-center">
+                        Get Early Access
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="text-sm text-gray-400 mt-8">
+                    Available on Android • Cloud-synced • Free tier available
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Footer --><footer class="bg-black py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400 text-sm">
-                &copy; 2025 Kinesin AI. All rights reserved.
-            </p>
-        </div>
-    </footer>
-
-</body>
-</html>
+    <!-- Footer -->
+    <footer class="bg-[#0d1117] border-t border-[#21262d] py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Kinesin AI</h4>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Your AI companion for biomedical and life science excellence.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-semibold mb-4">Product</h5>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#features" class="hover:text-cyan-400 transition">Features</a></li>
+                        <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-semibold mb-4">Legal</h5>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Disclaimer</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-semibold mb-4">Connect</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-[#21262d] rounded-lg flex items-center justify-center hover:bg-cyan-500/20 transition">
+                            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#21262d] pt-8">
