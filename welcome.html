@@ -88,6 +88,16 @@
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
+
+        /* Animation for page transition */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .fade-out {
+            animation: fadeOut 0.5s ease-in-out forwards;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -133,7 +143,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </a>
-                    <a href="#" class="btn-secondary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 inline-flex items-center justify-center">
+                    <a href="#" id="try-kinesin-btn" class="btn-secondary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 inline-flex items-center justify-center">
                         Try Kinesin
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
@@ -238,7 +248,7 @@
                     <h4 class="text-2xl font-bold text-white mb-3">Smart Thinking Process</h4>
                     <p class="text-gray-400 leading-relaxed mb-4">
                         See how Kinesin thinks through complex problems. Watch the AI analyze, synthesize, and formulate comprehensive answers.
-                    </p>
+                    </s_>
                     <div class="text-cyan-400 text-sm font-medium">Transparent reasoning</div>
                 </div>
 
@@ -288,21 +298,9 @@
                         Our mission is simple: <span class="text-white font-semibold">turn complex scientific knowledge into clear, accessible insights</span>. Whether you're a medical student studying for exams, a researcher analyzing data, or a healthcare professional looking for quick references, Kinesin adapts to your needs.
                     </p>
                     
-                    <div class="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-6 my-8">
-                        <h4 class="text-xl font-bold text-white mb-3 flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            Important Disclaimer
-                        </h4>
-                        <p class="text-gray-400">
-                            Kinesin is an AI tool built for educational and reference purposes only. It is <span class="text-white font-semibold">not a substitute for professional medical advice, diagnosis, or treatment</span>. Always consult qualified healthcare providers and verify critical information with primary sources.
-                        </p>
-                    </div>
-                    
                     <p>
                         Powered by <span class="text-cyan-400 font-semibold">Kinesin-core</span> with advanced NLP and RAG technology, Kinesin delivers fast, accurate, and contextually aware responses. Our system uses a vast library of biomedical literature to provide reliable explanations that simplify complex topics and accelerate learning.
-                    </p>
+                    </s_>
                 </div>
             </div>
         </div>
@@ -367,11 +365,12 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#" class="btn-primary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 inline-flex items-center justify-center">
-                        Get Early Access
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <a href="#" class="btn-secondary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 inline-flex items-center justify-center">
+                        <!-- Google Play Store Icon SVG -->
+                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.84 7.6L9.61 12.33L16.84 17.06C18.17 17.89 19.16 17.34 19.16 15.8V8.8C19.16 7.26 18.17 6.71 16.84 7.6ZM4.84 2.76L13.84 7.6V17.06L4.84 21.89C3.5 22.72 2.5 22.17 2.5 20.64V4C2.5 2.46 3.5 1.91 4.84 2.76Z"/>
                         </svg>
+                        Available on Play Store
                     </a>
                 </div>
                 
@@ -413,7 +412,7 @@
                     <h5 class="text-white font-semibold mb-4">Legal</h5>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-cyan-4ITF-8 transition">Terms of Service</a></li>
                         <li><a href="#" class="hover:text-cyan-400 transition">Disclaimer</a></li>
                     </ul>
                 </div>
@@ -431,3 +430,16 @@
             </div>
             
             <div class="border-t border-[#21262d] pt-8">
+                <p class="text-sm text-gray-500 text-center">
+                    &copy; 2025 Kinesin AI. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page transition script (REMOVED)
+    </script>
+
+</body>
+</html>
