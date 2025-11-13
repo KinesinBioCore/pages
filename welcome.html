@@ -4,109 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinesin - AI for Science</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Use Inter as the default font */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Deep Black Background */
+            color: #E0E0E0; /* Light gray for general text on black */
         }
-        /* Simple gradient background for the hero section */
+        /* Hero Section Gradient - Adjusted for dark theme with cyan focus */
         .hero-gradient {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, #000000 0%, #062f3a 100%); /* Darker gradient for hero */
         }
-        .dark .hero-gradient {
-            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
+        /* Specific overrides for Tailwind's dark mode classes to ensure consistency */
+        .dark\:bg-gray-900 { background-color: #000000 !important; }
+        .dark\:text-gray-200 { color: #E0E0E0 !important; }
+        .dark\:text-gray-300 { color: #B0B0B0 !important; }
+        .dark\:text-gray-400 { color: #808080 !important; }
+        .dark\:bg-gray-800 { background-color: #1a1a1a !important; }
+        .dark\:bg-gray-700 { background-color: #2a2a2a !important; }
+        .dark\:text-white { color: #FFFFFF !important; } /* Ensure white where needed on dark */
+
+        /* Custom Cyan color palette */
+        .text-cyan-primary { color: #06B6D4; } /* Tailwind 'cyan-500' */
+        .hover\:bg-cyan-600:hover { background-color: #0891B2; } /* Tailwind 'cyan-600' */
+        .bg-cyan-primary { background-color: #06B6D4; } /* Tailwind 'cyan-500' */
+        .border-cyan-primary { border-color: #06B6D4; }
+        .text-cyan-light { color: #67E8F9; } /* Tailwind 'cyan-300' */
+
+        /* Adjusting specific elements for better contrast */
+        .hero-gradient h2, .hero-gradient p {
+            color: #FFFFFF; /* White for hero text for maximum contrast on dark gradient */
+        }
+        .hero-gradient a {
+            background-color: #06B6D4; /* Cyan button */
+            color: #FFFFFF;
+        }
+        .hero-gradient a:hover {
+            background-color: #0891B2; /* Darker cyan on hover */
         }
     </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased">
+<body class="antialiased">
 
-    <!-- Navigation Bar -->
-    <nav class="container mx-auto px-6 py-4">
+    <!-- Navigation Bar --><nav class="container mx-auto px-6 py-4">
         <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-sky-600 dark:text-sky-400">Kinesin AI</h1>
-            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Coming Soon</span>
+            <h1 class="text-2xl font-bold text-cyan-primary">Kinesin AI</h1>
+            <span class="text-sm font-medium text-gray-400">Coming Soon</span>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-gradient dark:hero-gradient py-24 md:py-32">
+    <!-- Hero Section --><header class="hero-gradient py-24 md:py-32">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">
                 Discover the Future of Science with Kinesin
             </h2>
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
                 Kinesin is a new AI-powered application designed to help researchers, students, and enthusiasts explore complex scientific concepts.
             </p>
-            <a href="#features" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300">
+            <a href="#features" class="bg-cyan-primary hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300">
                 Learn More
             </a>
         </div>
     </header>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 md:py-28 bg-gray-50 dark:bg-gray-800">
+    <!-- Features Section --><section id="features" class="py-20 md:py-28 bg-gray-800">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">What Kinesin Will Do</h3>
-                <p class="text-lg text-gray-600 dark:text-gray-400">A new toolkit for scientific discovery.</p>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-3">What Kinesin Will Do</h3>
+                <p class="text-lg text-gray-300">A new toolkit for scientific discovery.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg">
+                <!-- Feature 1 --><div class="bg-gray-700 p-8 rounded-2xl shadow-lg">
                     <div class="mb-4">
-                        <!-- Simple icon using SVG -->
-                        <svg class="w-12 h-12 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17.25h4.5m-4.5 0a2.25 2.25 0 01-2.25-2.25v-7.5a2.25 2.25 0 012.25-2.25h4.5a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25m-4.5 0v.001M12 19.5h.01"></path></svg>
+                        <!-- Simple icon using SVG --><svg class="w-12 h-12 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17.25h4.5m-4.5 0a2.25 2.25 0 01-2.25-2.25v-7.5a2.25 2.25 0 012.25-2.25h4.5a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25m-4.5 0v.001M12 19.5h.01"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Analyze Data</h4>
-                    <p class="text-gray-600 dark:text-gray-400">
+                    <h4 class="text-xl font-bold text-white mb-2">Analyze Data</h4>
+                    <p class="text-gray-300">
                         Upload your research data and let Kinesin's AI find patterns, generate insights, and create visualizations.
                     </p>
                 </div>
-                <!-- Feature 2 -->
-                <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg">
+                <!-- Feature 2 --><div class="bg-gray-700 p-8 rounded-2xl shadow-lg">
                     <div class="mb-4">
-                        <svg class="w-12 h-12 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"></path></svg>
+                        <svg class="w-12 h-12 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Summarize Research</h4>
-                    <p class="text-gray-600 dark:text-gray-400">
+                    <h4 class="text-xl font-bold text-white mb-2">Summarize Research</h4>
+                    <p class="text-gray-300">
                         Provide a link to any scientific paper, and Kinesin will provide a clear, easy-to-understand summary.
                     </p>
                 </div>
-                <!-- Feature 3 -->
-                <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-lg">
+                <!-- Feature 3 --><div class="bg-gray-700 p-8 rounded-2xl shadow-lg">
                     <div class="mb-4">
-                        <svg class="w-12 h-12 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.25 3v1.5M4.5 8.25H3M19.5 8.25H21M15.75 3v1.5M12 18.75v-1.5m-6.364-6.364l-1.06-1.06M20.424 11.076l-1.06-1.06M17.657 5.343l-1.06 1.06M6.343 17.657l-1.06 1.06M12 21a9 9 0 100-18 9 9 0 000 18z"></path></svg>
+                        <svg class="w-12 h-12 text-cyan-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.25 3v1.5M4.5 8.25H3M19.5 8.25H21M15.75 3v1.5M12 18.75v-1.5m-6.364-6.364l-1.06-1.06M20.424 11.076l-1.06-1.06M17.657 5.343l-1.06 1.06M6.343 17.657l-1.06 1.06M12 21a9 9 0 100-18 9 9 0 000 18z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Generate Hypotheses</h4>
-                    <p class="text-gray-600 dark:text-gray-400">
+                    <h4 class="text-xl font-bold text-white mb-2">Generate Hypotheses</h4>
+                    <p class="text-gray-300">
                         Kinesin helps you brainstorm new research directions by connecting concepts and suggesting novel hypotheses.
-                    </E>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Section -->
-    <section class="py-20 md:py-28 bg-sky-600 text-white">
+    <!-- Call to Action Section --><section class="py-20 md:py-28 bg-cyan-primary text-white">
         <div class="container mx-auto px-6 text-center">
             <h3 class="text-3xl md:text-4xl font-bold mb-4">Launching Soon</h3>
-            <p class="text-lg md:text-xl text-sky-100 max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-cyan-100 max-w-2xl mx-auto">
                 Kinesin will be available for production use in one week.
             </p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-white dark:bg-gray-900 py-8">
+    <!-- Footer --><footer class="bg-black py-8">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-500 dark:text-gray-400 text-sm">
+            <p class="text-gray-400 text-sm">
                 &copy; 2025 Kinesin AI. All rights reserved.
             </p>
         </div>
